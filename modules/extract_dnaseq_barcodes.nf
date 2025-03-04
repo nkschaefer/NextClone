@@ -2,9 +2,8 @@
 
 process dnaseq_trim_reads {
     label 'medium'
-    conda "${projectDir}/conda_env/extract_dnaseq_env.yaml"
-
-    input:
+    
+input:
         path fastq_file
 
     output:
@@ -23,7 +22,6 @@ process dnaseq_trim_reads {
 
 process dnaseq_filter_reads {
     label 'medium'
-    conda "${projectDir}/conda_env/extract_dnaseq_env.yaml"
 
     input:
         path fastq_file
@@ -75,7 +73,6 @@ process dnaseq_count_reads {
 process dnaseq_split_reads_to_chunks {
     // break up the barcodes into chunks
     label 'small'
-    conda "${projectDir}/conda_env/extract_dnaseq_env.yaml"
 
     input:
         path barcode_counts
@@ -101,7 +98,6 @@ process dnaseq_map_barcodes {
     // Then combine the counting of read (flexiplex discovery)
     // and the mapped barcode
     label "${params.mapping_process_profile}"
-    conda "${projectDir}/conda_env/extract_dnaseq_env.yaml"
 
     input:
         path unmapped_fasta
@@ -135,7 +131,6 @@ process dnaseq_map_barcodes {
 
 process dnaseq_collapse_barcodes {
     label 'small'
-    conda "${projectDir}/conda_env/extract_dnaseq_env.yaml"
 
     input:
         path mapped_reads

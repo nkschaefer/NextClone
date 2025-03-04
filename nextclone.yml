@@ -1,4 +1,4 @@
-name: extract_dnaseq_env
+name: nextclone
 channels:
   - conda-forge
   - bioconda
@@ -10,3 +10,7 @@ dependencies:
   - natsort
   - trim-galore
   - fastp
+  - pandas
+  - numpy
+  - pysam
+  - sambamba

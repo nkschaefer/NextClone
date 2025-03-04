@@ -1,8 +1,6 @@
 #!/usr/bin/env nextflow
 
 process sc_get_unmapped_reads {
-    // Using sambamba
-    module 'sambamba'
     label 'medium_mem'
 
     input:
@@ -20,7 +18,6 @@ process sc_get_unmapped_reads {
 
 process sc_remove_low_qual_reads {
     label 'small_mem'
-    conda "${projectDir}/conda_env/extract_sc_env.yaml"
     
     input:
         path unmapped_bam
@@ -37,8 +34,6 @@ process sc_remove_low_qual_reads {
 }
 
 process sc_retain_reads_with_CB_tag {
-    // Using sambamba
-    module 'sambamba'
     label 'medium_mem'
 
     input:
@@ -63,7 +58,6 @@ process sc_retain_reads_with_CB_tag {
 
 process sc_split_unmapped_reads {
     label 'small_mem'
-    conda "${projectDir}/conda_env/extract_sc_env.yaml"
 
     input:
         path unmapped_bam 
@@ -112,7 +106,6 @@ process sc_map_unmapped_reads {
 
 process sc_merge_barcodes {
     label 'small_mem'
-    conda "${projectDir}/conda_env/extract_sc_env.yaml"
 
     input:
         path mapped_reads
